@@ -1,0 +1,17 @@
+/* Importar la fuente Creepster desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+/* Establecer los estilos para todos los elementos de la página */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Creepster', cursive;
+}
+
+/* Establecer la fuente para los elementos de código */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
