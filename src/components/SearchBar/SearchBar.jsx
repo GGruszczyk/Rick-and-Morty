@@ -1,38 +1,29 @@
-import style from './SearchBar.module.css';
-import imageLogo from '../../image/logoNav.png'; // ruta actualizada
+import React, { useState } from 'react';
 
-export default function SearchBar(props) {
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-   const handleEnter = (event) => {
-      if (event.key === 'Enter') {
-         props.onSearch();
-      }      
-   }
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-   return (
-      <div className={style.containerSearch}>
-      <img 
-         src={imageLogo} 
-          alt="logo rick and morty" 
-          className={style.logo} 
-      />
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+    setSearchTerm('');
+  };
 
-   
-      <div className={style.containerInput}>
+  return (
+    <form onSubmit={handleFormSubmit}>
       <input
-         type="search"
-         placeholder="Search..."
-         className={style.input}
-         onKeyUp={handleEnter}
-      />   
-      <button
-         onClick={props.onSearch}
-         className={style.button}
-      >
-      </button>
-      </div>
-      </div>
-            
-   
-   ); 
-}
+        type="text"
+        placeholder="Buscar personaje"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <button type="submit">Agregar</button>
+    </form>
+  );
+};
+
+export default SearchBar;

@@ -1,26 +1,38 @@
+import React, { useState } from 'react';
 import Card from '../Card/Card';
-import style from './Cards.module.css';
+import styles from './Cards.module.css';
 
-export default function Cards(props) {
-  const { characters } = props;
+const Cards = ({ characters }) => {
+  const [openCards, setOpenCards] = useState([]);
+
+  const closeCard = (id) => {
+    setOpenCards(openCards.filter((openId) => openId !== id));
+  };
+
+  const openCard = (id) => {
+    if (!openCards.includes(id)) {
+      setOpenCards([...openCards, id]);
+    }
+  };
+
   return (
-    <div className={style.container}>
-      {
-        characters.map((character) => {
-          return (
-            <Card 
-              key={character.id}
-              name={character.name}
-              species={character.species}
-              gender={character.gender}
-              origin={character.origin.name}
-              status={character.status}
-              image={character.image}
-              onClose={() => window.alert('Emulamos que se cierra la card')}
-            />
-          );
-        })
-      }
+    <div className={styles['card-container']}>
+      {characters.map((character) => (
+        <Card
+          key={character.id}
+          name={character.name}
+          status={character.status}
+          species={character.species}
+          gender={character.gender}
+          origin={character.origin}
+          image={character.image}
+          isOpen={openCards.includes(character.id)}
+          onClose={() => closeCard(character.id)}
+          onOpen={() => openCard(character.id)}
+        />
+      ))}
     </div>
   );
-}
+};
+
+export default Cards;
