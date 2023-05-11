@@ -12,7 +12,7 @@ const validation = (data)  => {
     if(!data.email) {
         errors.emailVacio = "Debes ingresar un email"
     }
-    if(data.email !== "meli@gmail.com") {
+    if(data.email !== "german@soyhenry.com") {
         errors.validEmail = "Email incorrecto"
     }
 
@@ -23,7 +23,7 @@ const validation = (data)  => {
     if(!passwordRegexp.test(data.password)) {
         errors.password = "Debe contener letras y numeros, ademas tiene que tener una longitud entre 6 y 10 caracteres"
     }
-    if(data.password !== "1234meli") {
+    if(data.password !== "1234german") {
         errors.incorrectPass = "Contraseña incorrecta"
     }
 

@@ -3,8 +3,10 @@ import Card from "../Card/Card";
 import {  filterCards, orderCards } from '../../redux/actions'
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import style from './Favorites.module.css'
 
-const Favorites = ({myFavorites})=> {
+//Recibe por props la fn onClose
+const Favorites = ({ myFavorites })=> {
     const [aux, setAux ] = useState(false)
     const dispatch = useDispatch()
 
@@ -17,38 +19,43 @@ const Favorites = ({myFavorites})=> {
         dispatch(filterCards(e.target.value))
     }
 
+
     return (
         <>
-            <h1>My Favorites</h1>
-            <select onChange={handleOrder}>
-                <option value="A">Ascendente</option>
-                <option value="D">Descendente</option>
-            </select>
+            <h1 className={style.title}> My Favorites</h1>
+            <div className={style.filter}>
+                <select onChange={handleOrder} className={style.select}>
+                    <option value="A">Ascendente</option>
+                    <option value="D">Descendente</option>
+                </select>
             
-            <select onChange={handleFilter}>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Genderless">Genderless</option>
-                <option value="unknown">unknown</option>
-            </select>
-
+                <select onChange={handleFilter}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Genderless">Genderless</option>
+                    <option value="unknown">unknown</option>
+                </select>
+            </div>
+           
+        <div className={style.card}>
             {
-                myFavorites?.map(character => {
+                myFavorites?.map((character) => {
                     return (
-                        <Card 
-                            key={character.id}
-                            id= {character.id}
-                            name={character.name}
-                            species={character.species}
-                            gender={character.gender}
-                            origin = {character.origin}
-                            status ={character.status}
-                            image={character.image}
+                            <Card 
+                                key={character.id}
+                                id= {character.id}
+                                name={character.name}
+                                species={character.species}
+                                gender={character.gender}
+                                origin = {character.origin}
+                                status ={character.status}
+                                image={character.image} 
                             
-                        />
+                            /> 
                     )
                 })
-            }
+            }   
+        </div>
         </>
         )
 }

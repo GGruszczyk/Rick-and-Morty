@@ -8,19 +8,18 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FAV:
-            let copyAllCharacter = [...state.allCharacter, action.payload]
-
-            return {
-                ...state,
-                myFavorites: copyAllCharacter,
-                allCharacter: [...copyAllCharacter]
-            }
+            case 'ADD_FAV':
+                 return { 
+                    ...state, 
+                    myFavorites: action.payload, 
+                    allCharacter: action.payload 
+                };
         case FILTER:
-            let copyFilter =  state.allCharacter.filter((character) => character.gender === action.payload)
+            let characterFilter =  state.allCharacter.filter((character) => character.gender === action.payload)
 
             return {
                 ...state,
-                myFavorites: copyFilter
+                myFavorites: characterFilter,
             }
         case ORDER:
             const orderCharacter = state.allCharacter.sort((a, b)=> {
@@ -37,20 +36,26 @@ const reducer = (state = initialState, action) => {
                 }
             
             })
-            console.log("caso order",orderCharacter);
           return {
             ...state,
             myFavorites: [...orderCharacter]
           }
 
         case REMOVE_FAV:
-            let deleteCharacter = state.myFavorites.filter(character => character.id !== Number(action.payload))
-
-            return {
-                ...state,
-                myFavorites: deleteCharacter
+            return { 
+                ...state, 
+                myFavorites: action.payload 
             }
-            
+
+            //Se agrega nuevo caso
+        // case REMOVE_COMPONENT_FAVORITES:
+        //     const removeFavorite = state.myFavorites.filter((char)=> char.id !== Number(action.payload) )
+    
+        //     return {
+        //         ...state,
+        //         myFavorites: removeFavorite
+        //     }
+
         default:
             return {
                 ...state

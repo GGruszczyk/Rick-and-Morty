@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 export default function SearchBar(props) {
    let [ id, setId ] = useState('');
-   console.log(" soy el ide de Search",id);
 
    const handleEnter = (event) => {
       if (event.key === 'Enter') {

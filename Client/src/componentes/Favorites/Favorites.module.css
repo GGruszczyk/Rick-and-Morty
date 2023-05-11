@@ -1,0 +1,19 @@
+.title {
+    color: white;
+    text-align: center;
+}
+
+.filter {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.select{
+    margin-right: 20px;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
