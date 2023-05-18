@@ -9,7 +9,6 @@ const deleteFav = (req, res)=> {
     const { id } = req.params
     
     const deleteCharacter = myFavorites.filter((character)=> character.id !== id)
-    console.log("soy el id deleteChar", deleteCharacter);
 
     myFavorites = deleteCharacter
     return res.status(200).json(myFavorites)

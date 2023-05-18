@@ -47,15 +47,6 @@ const reducer = (state = initialState, action) => {
                 myFavorites: action.payload 
             }
 
-            //Se agrega nuevo caso
-        // case REMOVE_COMPONENT_FAVORITES:
-        //     const removeFavorite = state.myFavorites.filter((char)=> char.id !== Number(action.payload) )
-    
-        //     return {
-        //         ...state,
-        //         myFavorites: removeFavorite
-        //     }
-
         default:
             return {
                 ...state

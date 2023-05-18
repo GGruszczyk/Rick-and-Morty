@@ -9,7 +9,6 @@ function Card(props) {
 
    const { pathname } = useLocation()
 
-
    const [ isFav, setIsFav ] = useState(false)
 
    useEffect(() => {
@@ -63,7 +62,7 @@ function Card(props) {
                }
                
 
-               <Link to = {`/detail/${id}`}>
+               <Link to = {`/detail/${id}`} >
                   <h2>{name}</h2>
                </Link>
 

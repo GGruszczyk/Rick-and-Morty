@@ -1,40 +1,21 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_COMPONENT_FAVORITES, REMOVE_FAV } from './actions-types'
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from './actions-types'
 import axios from "axios";
 
 export const addFav = (character) => {
-   try {
-      const endpoint = 'http://localhost:3001/rickandmorty/fav'
-      return async(dispatch)=> {
+   const endpoint = 'http://localhost:3001/rickandmorty/fav'
+   return async(dispatch)=> {
+         try {
          const { data } = await axios.post(endpoint, character)
          return dispatch({
             type: ADD_FAV,
             payload: data,
          });
       }
+      catch (error) {
+         return { error: error.message}
+      }
    } 
-   catch (error) {
-      return { error: error.message}
-   }
 }
-
-// export const addFav = (character) => {
-//    const endpoint = 'http://localhost:3001/rickandmorty/fav';
-//    return async (dispatch) => {
-//        try {
-//            const { data } = await axios.post(endpoint, character)
-//            return dispatch({
-//                type: ADD_FAV,
-//                payload: data,
-//            });
-//        } 
-//        catch (error) {
-//            return { error: error.message}
-//        }
-//    };
-// }
-
-
-
 
  export const removeFav = (id) => {
     try {
@@ -67,10 +48,3 @@ export const orderCards = (order)=> {
     }
 }
 
-//Se agrega nueva action
-export const removeComponentFavorites = (id) => {
-   return {
-      type: REMOVE_COMPONENT_FAVORITES,
-      payload: id
-   }
-}

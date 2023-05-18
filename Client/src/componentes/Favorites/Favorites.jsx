@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import style from './Favorites.module.css'
 
-//Recibe por props la fn onClose
 const Favorites = ({ myFavorites })=> {
     const [aux, setAux ] = useState(false)
     const dispatch = useDispatch()
@@ -49,8 +48,7 @@ const Favorites = ({ myFavorites })=> {
                                 gender={character.gender}
                                 origin = {character.origin}
                                 status ={character.status}
-                                image={character.image} 
-                            
+                                image={character.image}     
                             /> 
                     )
                 })
